@@ -18,28 +18,48 @@ st.set_page_config(page_title="HR Attrition Dashboard", page_icon="👥", layout
 # CUSTOM SIDEBAR NAVIGATION (No Loops!)
 # ==========================================
 # We hide Streamlit's default menu so it doesn't conflict
+
 st.markdown("""
 <style>
+/* Hide the default Streamlit menu */
 [data-testid="stSidebarNav"] {display: none;}
-/* Make sidebar buttons look like clean links, not giant blue blocks */
-[data-testid="stSidebar"] .stButton>button {
+
+/* Target the button container and the button itself */
+[data-testid="stSidebar"] div.stButton {
+    display: flex !important;
+    justify-content: flex-start !important;
+    margin-bottom: -15px !important; /* Removes the giant gap between buttons */
+}
+
+/* Target the actual button */
+[data-testid="stSidebar"] div.stButton > button {
     background-color: transparent !important;
     color: #1A2B4C !important;
     border: none !important;
     text-align: left !important;
-    padding: 5px 10px !important;
+    justify-content: flex-start !important; 
+    padding: 10px 20px !important; 
     font-weight: 600 !important;
     box-shadow: none !important;
     font-size: 16px !important;
+    width: 100% !important; 
 }
-[data-testid="stSidebar"] .stButton>button:hover {
+
+/* Target the text inside the button to force it left */
+[data-testid="stSidebar"] div.stButton > button > div {
+    justify-content: flex-start !important;
+    text-align: left !important;
+}
+
+/* Hover effect */
+[data-testid="stSidebar"] div.stButton > button:hover {
     background-color: #E8F0FE !important;
     color: #1A73E8 !important;
 }
 </style>
 """, unsafe_allow_html=True)
 
-st.sidebar.title("Menu")
+st.sidebar.title("")
 
 if "current_page" not in st.session_state:
     st.session_state.current_page = "Home"
