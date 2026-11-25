@@ -14,7 +14,7 @@ from frontend.components.ui import setup  # noqa: E402
 
 setup("Overview", "📊")
 df, res = load_everything()
-f = sidebar_filters(df, "ov")
+f = sidebar_filters(df, "ov📊")
 
 st.title("📊 Overview")
 if f.empty:
@@ -39,3 +39,5 @@ a.plotly_chart(charts.histogram(f, "MonthlyIncome", "Monthly income: current vs 
 b.plotly_chart(charts.histogram(f, "YearsAtCompany", "Years at company: current vs left",
                                 nbins=20))
 st.caption("Employees who left tend to earn less and have worked fewer years at the company.")
+
+
